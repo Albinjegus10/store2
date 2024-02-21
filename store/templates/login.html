@@ -1,0 +1,260 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+{% load widget_tweaks %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Baytech Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css"> <!-- change sass to css in the end  -->
+</head>
+
+<body>
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- Page Preloader END -->
+
+{% include "navbar.html" %}
+
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>All Departments</span>
+                    </div>
+                    <ul>
+                        <li><a href="{% url 'search_cat' category_id=categories.0.category_id %}">{{ categories.0.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.1.category_id %}">{{ categories.1.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.2.category_id %}">{{ categories.2.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.3.category_id %}">{{ categories.3.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.4.category_id %}">{{ categories.4.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.5.category_id %}">{{ categories.5.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.6.category_id %}">{{ categories.6.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.7.category_id %}">{{ categories.7.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.8.category_id %}">{{ categories.8.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.9.category_id %}">{{ categories.9.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.10.category_id %}">{{ categories.10.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.11.category_id %}">{{ categories.11.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.12.category_id %}">{{ categories.12.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.13.category_id %}">{{ categories.13.category_name }}</a></li>
+                        <li><a href="{% url 'search_cat' category_id=categories.14.category_id %}">{{ categories.14.category_name }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="/search" method="get">
+<!--                            <div class="hero__search__categories">-->
+<!--                                All Categories-->
+<!--                                <span class="arrow_carrot-down"></span>-->
+<!--                            </div>-->
+                            <input type="text" placeholder="What are you looking for?" name="query" id="query">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>9750750519</h5>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__text" style="display: flex; align-items: center; justify-content: center;">
+                    <div class="container"
+                         style="background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                        <div class="form-container"
+                             style="background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;">
+                            <h2>Login</h2>
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit">Login</button>
+                            </form>
+                            <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section END -->
+
+
+<!-- Footer Section -->
+{% include 'footer.html' %}
+<!-- Footer Section END -->
+<script>
+    var imageIndex1 = 0;
+    var imagePaths1 = [
+        '{{ products.product_1.image_2 }}',
+        '{{ products.product_1.image_3 }}',
+        '{{ products.product_1.image_4 }}',
+        '{{ products.product_1.image_5 }}'
+    ];
+
+    function changeImage1() {
+        var featuredItem = document.querySelector('.col-lg-3 .featured__item__pic');
+        featuredItem.style.backgroundImage = "url('media/" +  imagePaths1[imageIndex1] + "')";
+        imageIndex1 = (imageIndex1 + 1) % imagePaths1.length;
+    }
+
+    var imageIndex2 = 0;
+    var imagePaths2 = [
+        '{{ products.product_2.image_2 }}',
+        '{{ products.product_2.image_3 }}',
+        '{{ products.product_2.image_4 }}',
+        '{{ products.product_2.image_5 }}'
+    ];
+
+    function changeImage2() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(2) .featured__item__pic');
+        featuredItem.style.backgroundImage = "url('media/"  + imagePaths2[imageIndex2] + "')";
+        imageIndex2 = (imageIndex2 + 1) % imagePaths2.length;
+    }
+
+    var imageIndex3 = 0;
+    var imagePaths3 = [
+        '{{ products.product_3.image_2 }}',
+        '{{ products.product_3.image_3 }}',
+        '{{ products.product_3.image_4 }}',
+        '{{ products.product_3.image_5 }}'
+    ];
+
+    function changeImage3() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(3) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths3[imageIndex3] + "')";
+        imageIndex3 = (imageIndex3 + 1) % imagePaths3.length;
+    }
+
+    // Variables for Product 4
+    var imageIndex4 = 0;
+    var imagePaths4 = [
+        '{{ products.product_4.image_2 }}',
+        '{{ products.product_4.image_3 }}',
+        '{{ products.product_4.image_4 }}',
+        '{{ products.product_4.image_5 }}'
+    ];
+
+    function changeImage4() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(4) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths4[imageIndex4] + "')";
+        imageIndex4 = (imageIndex4 + 1) % imagePaths4.length;
+    }
+
+    // Variables for Product 5
+    var imageIndex5 = 0;
+    var imagePaths5 = [
+        '{{ products.product_5.image_2 }}',
+        '{{ products.product_5.image_3 }}',
+        '{{ products.product_5.image_4 }}',
+        '{{ products.product_5.image_5 }}'
+    ];
+
+    function changeImage5() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(5) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths5[imageIndex5] + "')";
+        imageIndex5 = (imageIndex5 + 1) % imagePaths5.length;
+    }
+
+    // Variables for Product 6
+    var imageIndex6 = 0;
+    var imagePaths6 = [
+        '{{ products.product_6.image_2 }}',
+        '{{ products.product_6.image_3 }}',
+        '{{ products.product_6.image_4 }}',
+        '{{ products.product_6.image_5 }}'
+    ];
+
+    function changeImage6() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(6) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths6[imageIndex6] + "')";
+        imageIndex6 = (imageIndex6 + 1) % imagePaths6.length;
+    }
+
+    // Variables for Product 7
+    var imageIndex7 = 0;
+    var imagePaths7 = [
+        '{{ products.product_7.image_2 }}',
+        '{{ products.product_7.image_3 }}',
+        '{{ products.product_7.image_4 }}',
+        '{{ products.product_7.image_5 }}'
+    ];
+
+    function changeImage7() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(7) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths7[imageIndex7] + "')";
+        imageIndex7 = (imageIndex7 + 1) % imagePaths7.length;
+    }
+
+    // Variables for Product 8
+    var imageIndex8 = 0;
+    var imagePaths8 = [
+        '{{ products.product_8.image_2 }}',
+        '{{ products.product_8.image_3 }}',
+        '{{ products.product_8.image_4 }}',
+        '{{ products.product_8.image_5 }}'
+    ];
+
+    function changeImage8() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(8) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths8[imageIndex8] + "')";
+        imageIndex8 = (imageIndex8 + 1) % imagePaths8.length;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('signupPassword');
+            const passwordError = document.getElementById('passwordError');
+    document.getElementById('signupForm').addEventListener('submit', function (event) {
+             // Password validation
+             const password = passwordInput.value;
+             if (password.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+             passwordError.textContent = 'Password must be at least 8 characters and contain at least one special character.';
+             event.preventDefault(); // Prevent form submission
+             } else {
+             passwordError.textContent = ''; // Clear previous error messages
+    }
+    });
+    });
+
+</script>
+<!-- JS Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

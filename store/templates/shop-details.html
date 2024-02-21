@@ -1,0 +1,306 @@
+{% load static %}
+{% load custom_filters %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Baytech</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css">
+    <!-- Add this to the head of your HTML document -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha384-GLhlTQ8i04FZ5LODEVI7bF5gBpqU8xhuhcendoaBiS5P/SFIIJdA2bPmFCpdJ2e9" crossorigin="anonymous">
+    <style>
+        /* Add this style in your existing stylesheet or in a separate file */
+        .product-details {
+            padding: 80px 0;
+        }
+        .product__details__pic {
+            position: relative;
+        }
+        .product__details__pic__item img {
+            display: block;
+            width: 50px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product__details__pic__slider {
+            margin-top: 20px;
+        }
+        .product__details__pic__slider img.thumbnail {
+            width: 80px; /* Set a fixed width for thumbnail images in the slider */
+            height: 80px; /* Set a fixed height for thumbnail images in the slider */
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .product__details__text {
+            padding-left: 50px;
+        }
+        .product__details__text h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .product__details__text h5 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #e44d26;
+        }
+        .product__details__text p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .read-more {
+            color: #e44d26;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-left: 10px;
+        }
+        .hidden-description {
+            display: none;
+        }
+        .primary-btn {
+            display: inline-block;
+            background-color: #e44d26;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .primary-btn:hover {
+            background-color: #333;
+        }
+        /* Customize the quantity input */
+        .pro-qty input {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #e44d26;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+{%if request.user.is_authenticated%}
+{% include "customer_navbar.html" %}
+{%else%}
+{% include "navbar.html" %}
+{%endif%}
+<!-- Breadcrumb Section -->
+<section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>ogani Package</h2>
+                    <div class="breadcrumb__option">
+                        <a href="{% url 'home' %}">Home</a>
+
+                        <span>ogani Package</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section END -->
+<!-- Product Details Section Begin -->
+
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <!-- Main product image -->
+                        <img src="{{ product.image_1.url }}" alt="{{ product.product_name }}">
+                    </div>
+                    <div class="product__details__pic__slider owl-carousel">
+                        {% for image in product.get_additional_images %}
+                        <div class="product__details__pic__item">
+                            <img class="thumbnail" src="{{ image.url }}" alt="{{ product.product_name }}"
+                                 data-description="{{ product.description }}"
+                                 data-sales-price="{{ product.sales_price }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- Display other details of the selected product -->
+            <div class="col-lg-6 col-md-6">
+                <h2>{{ product.product_name }}</h2>
+                {% if discount_price %}
+                <p>Price: ₹{{ discount_price }}</p>
+                {% else %}
+                <!-- If no discount price, display regular sales price -->
+                <p>Price: ₹{{ product.sales_price }}</p>
+                {% endif %}
+                {% if product.total_ratings %}
+                {% for _ in product.total_ratings|get_range %}
+                ⭐️
+                {% endfor %}
+                {% for _ in product.total_ratings|get_complement_range %}
+                ⚪️
+                {% endfor %}
+                {% endif %}
+                <p id="productDescription_{{ product.product_id }}" class="product-description">
+                    <span class="truncated-description">{{ product.description|safe|truncatewords_html:20 }}</span>
+                    {% if product.description|length > 20 %}
+                    <span class="read-more" data-description="{{ product.description }}">Read more</span>
+                    <span class="hidden-description" style="display: none;">{{ product.description }}</span>
+                    {% endif %}
+                </p>
+                <form method="post" action="{% url 'add_to_cart' product_id=product.product_id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="image" value="{{ product.image_1.url }}">
+                    <input type="hidden" name="name" value="{{ product.product_name }}">
+                    {% if product.discount_price %}
+                    <input type="hidden" name="price" value="{{ product.discount_price }}">
+                    {% else %}
+                    <input type="hidden" name="price" value="{{ product.sales_price }}">
+                    {% endif %}
+                    <!-- Add other hidden fields as needed -->
+                    <div class="product__details__quantity">
+                        <div class="quantity">
+                            <div class="pro-qty">
+                                <input type="number" name="quantity" value="1">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="primary-btn">ADD TO CART</button>
+                </form>
+
+                <!-- Buy Now button with sales price -->
+                <div class="product__details__reviews">
+                    <h4>Customer Reviews:</h4>
+                    {% for review in product.get_reviews_list %}
+                    <p>{{ review }}</p>
+                    {% endfor %}
+                </div>
+                <!-- Add more details as needed -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Owl Carousel Script (Make sure to include the Owl Carousel library) -->
+<script src="https://owlcarousel2.github.io/OwlCarousel2/owl.carousel.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const thumbnailContainers = document.querySelectorAll('.product__details__pic');
+        thumbnailContainers.forEach(function (container) {
+            const mainImage = container.querySelector('.product__details__pic__item img');
+            const productName = container.querySelector('.product__details__text h3');
+            const productPrice = container.querySelector('.product__details__text h5');
+            const productDescription = container.querySelector('.product__details__text p');
+            const thumbnailImages = container.querySelectorAll('.product__details__pic__slider img');
+            thumbnailImages.forEach(function (thumbnail) {
+                thumbnail.addEventListener('click', function () {
+                    mainImage.src = this.src;
+                    productName.textContent = this.alt;
+                    productPrice.textContent = 'Price: ₹' + this.getAttribute('data-sales-price');
+                    productDescription.textContent = this.getAttribute('data-description');
+                });
+            });
+            // Initialize Owl Carousel
+            $(container.querySelector('.product__details__pic__slider')).owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    600: {
+                        items: 3,
+                        nav: false
+                    },
+                    1000: {
+                        items: 5,
+                        nav: false,
+                        loop: false
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const readMoreButtons = document.querySelectorAll('.read-more');
+        readMoreButtons.forEach(function (readMoreButton) {
+            readMoreButton.addEventListener('click', function () {
+                const descriptionParagraph = readMoreButton.previousElementSibling;
+                const hiddenDescription = readMoreButton.nextElementSibling;
+                descriptionParagraph.innerHTML = hiddenDescription.innerHTML;
+                readMoreButton.style.display = 'none';
+            });
+            // Add style for the "Read More" text
+            readMoreButton.style.color = 'blue';
+            readMoreButton.style.cursor = 'pointer';
+        });
+    });
+</script>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        // Update cart count when the page loads-->
+<!--        updateCartCount();-->
+<!--        // Function to update cart count-->
+<!--        function updateCartCount() {-->
+<!--            // Make an AJAX request to fetch the cart count-->
+<!--            $.get("{% url 'get_cart_count' %}", function (data) {-->
+<!--                // Update the cart count in the navigation bar-->
+<!--                $("#cartCount").text(data.cart_count);-->
+<!--            });-->
+<!--        }-->
+<!--        // Update cart count when a product is added to the cart-->
+<!--        $("form[action*='add_to_cart']").submit(function (event) {-->
+<!--            event.preventDefault();-->
+<!--            var form = $(this);-->
+<!--            // Make an AJAX request to add the product to the cart-->
+<!--            $.post(form.attr("action"), form.serialize(), function () {-->
+<!--                // Update the cart count in the navigation bar-->
+<!--                updateCartCount();-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+<!-- Footer Section END -->
+
+<!-- JS Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{%static 'js/main.js' %}"></script>
+</body>
+</html>

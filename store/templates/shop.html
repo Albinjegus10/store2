@@ -1,0 +1,468 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Baytech Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css"> <!-- change sass to css in the end  -->
+<style>
+    /* Latest Product Section */
+.latest-product {
+    padding: 50px 0;
+}
+
+.latest-product h4 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.latest-product__slider {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.latest-product__slider__item {
+    margin-bottom: 30px;
+}
+
+.latest-product__item {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.latest-product__item:hover {
+    transform: translateY(-5px);
+}
+
+.latest-product__item__pic img {
+    width: 100;
+    height: 100;
+    display: block;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.latest-product__item__pic img:hover {
+    transform: scale(1.05);
+}
+
+.latest-product__item__text {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.latest-product__item__text h6 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.latest-product__item__text span {
+    font-size: 16px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+    <!-- Page Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    {%if request.user.is_authenticated%}
+    {% include "customer_navbar.html" %}
+  {%else%}
+    {% include "navbar.html" %}
+  {%endif%}
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Ogani Shop</h2>
+                        <div class="breadcrumb__option">
+                            <a href="{% url 'home' %}">Home</a>
+                            <span>Shop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section END -->
+    <!-- Product Section -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>Department</h4>
+                            <ul>
+
+                      <li><a href="{% if categories.0.category_id %}{% url 'search_cat' category_id=categories.0.category_id %}{% endif %}">{{ categories.0.category_name }}</a></li>
+                            <li><a href="{% if categories.1.category_id %}{% url 'search_cat' category_id=categories.1.category_id %}{% endif %}">{{ categories.1.category_name }}</a></li>
+                            <li><a href="{% if categories.2.category_id %}{% url 'search_cat' category_id=categories.2.category_id %}{% endif %}">{{ categories.2.category_name }}</a></li>
+                            <li><a href="{% if categories.3.category_id %}{% url 'search_cat' category_id=categories.3.category_id %}{% endif %}">{{ categories.3.category_name }}</a></li>
+                            <li><a href="{% if categories.4.category_id %}{% url 'search_cat' category_id=categories.4.category_id %}{% endif %}">{{ categories.4.category_name }}</a></li>
+                            <li><a href="{% if categories.5.category_id %}{% url 'search_cat' category_id=categories.5.category_id %}{% endif %}">{{ categories.5.category_name }}</a></li>
+                            <li><a href="{% if categories.6.category_id %}{% url 'search_cat' category_id=categories.6.category_id %}{% endif %}">{{ categories.6.category_name }}</a></li>
+                            <li><a href="{% if categories.7.category_id %}{% url 'search_cat' category_id=categories.7.category_id %}{% endif %}">{{ categories.7.category_name }}</a></li>
+                            <li><a href="{% if categories.8.category_id %}{% url 'search_cat' category_id=categories.8.category_id %}{% endif %}">{{ categories.8.category_name }}</a></li>
+                            <li><a href="{% if categories.9.category_id %}{% url 'search_cat' category_id=categories.9.category_id %}{% endif %}">{{ categories.9.category_name }}</a></li>
+                            <li><a href="{% if categories.9.category_id %}{% url 'search_cat' category_id=categories.10.category_id %}{% endif %}">{{ categories.10.category_name }}</a></li>
+                            <li><a href="{% if categories.9.category_id %}{% url 'search_cat' category_id=categories.11.category_id %}{% endif %}">{{ categories.12.category_name }}</a></li>
+                            <li><a href="{% if categories.9.category_id %}{% url 'search_cat' category_id=categories.12.category_id %}{% endif %}">{{ categories.13.category_name }}</a></li>
+                            <li><a href="{% if categories.9.category_id %}{% url 'search_cat' category_id=categories.13.category_id %}{% endif %}">{{ categories.14.category_name }}</a></li>
+                            <li><a href="{% if categories.9.category_id %}{% url 'search_cat' category_id=categories.14.category_id %}{% endif %}">{{ categories.15.category_name }}</a></li>
+
+                        </ul>
+                    </div>
+                        <div class="sidebar__item">
+                            <h4>Craft your range amount</h4>
+
+                        </div>
+                        <form method="get" action="{% url 'shop' %}">
+                            {{ form.as_p }}
+                            <button type="submit"
+                                    style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">
+                                Filter
+                            </button>
+                        </form>
+
+
+                        <div class="sidebar__item">
+                            <div class="latest-product__text">
+                                <h4>Latest Products</h4>
+                                <div class="latest-product__slider owl-carousel">
+                                    {% for product1 in top_rated_products %}
+                        {% if forloop.first or forloop.counter0|divisibleby:3 %}
+                        <div class="latest-product__slider__item">
+                            {% endif %}
+                            <a href="{% url 'shop_details' product_id=product1.product_id %}"
+                               class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="/media/{{ product1.image_1 }}"
+                                         onclick="redirectToURL('{% url 'shop_details' product_id=product1.product_id %}')"
+                                         style="cursor: pointer;" alt="{{ product1.product_name }}">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>{{ product1.product_name }}</h6>
+                                    <span>₹{{ product1.sales_price }}</span>
+                                </div>
+                            </a>
+                            {% if forloop.last or forloop.counter|divisibleby:3 %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="latest-product__text">
+                    <!-- Top Rated Products -->
+                    <h4>Top Rated Products</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        {% for product1 in top_rated_products %}
+                        {% if forloop.first or forloop.counter0|divisibleby:3 %}
+                        <div class="latest-product__slider__item">
+                            {% endif %}
+                            <a href="{% url 'shop_details' product_id=product1.product_id %}"
+                               class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="/media/{{ product1.image_1 }}"
+                                         onclick="redirectToURL('{% url 'shop_details' product_id=product1.product_id %}')"
+                                         style="cursor: pointer;" alt="{{ product1.product_name }}">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>{{ product1.product_name }}</h6>
+                                    <span>₹{{ product1.sales_price }}</span>
+                                </div>
+                            </a>
+                            {% if forloop.last or forloop.counter|divisibleby:3 %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="latest-product__text">
+                    <!-- Review Products -->
+                    <h4>Review Products</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        {% for product2 in reviewed_products %}
+                        {% if forloop.first or forloop.counter0|divisibleby:3 %}
+                        <div class="latest-product__slider__item">
+                            {% endif %}
+                            <a href="{% url 'shop_details' product_id=product2.product_id %}"
+                               class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="/media/{{ product2.image_1 }}"
+                                         onclick="redirectToURL('{% url 'shop_details' product_id=product2.product_id %}')"
+                                         alt="{{ product2.product_name }}">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>{{ product2.product_name }}</h6>
+                                    <span>₹{{ product2.sales_price }}</span>
+                                </div>
+                            </a>
+                            {% if forloop.last or forloop.counter|divisibleby:3 %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-7">
+                    <div class="product__discount">
+                        <div class="section-title product__discount__title">
+                            <h2>Sale Off</h2>
+                        </div>
+<div class="row">
+    <div class="row product__discount__slider owl-carousel">
+        {% for product in product_list %}
+        <div class="col-lg-4">
+            <div class="product__discount__item">
+                <div class="product__discount__item__pic set-bg"
+                    onclick="handleClick1{{ product.product_id }}(event)"
+                    style="cursor: pointer;"
+                    data-setbg="/media/{{ product.image_1 }}">
+                    <div class="product__discount__percent">{{ product.product_discount|floatformat:"0"  }}%</div>
+                    <ul class="product__item__pic__hover">
+
+                        <li><a><i class="fa fa-retweet" onclick="handleClick{{ product.product_id }}(event)"></i></a></li>
+                        <li>
+                            <form method="post" action="{% url 'add_to_cart' product_id=product.product_id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="image" value="{{ product.image_1.url }}">
+                                <input type="hidden" name="name" value="{{ product.product_name }}">
+                                <input type="hidden" name="price" value="{{ product.sales_price }}">
+                                <!-- Add other details as needed -->
+                                <button type="submit" style="background-color: white; border: none; padding: 0; cursor: pointer; transition: background-color 0.3s; border-radius: 50%;" onmouseover="this.style.backgroundColor='brown'" onmouseout="this.style.backgroundColor='white'">
+                                    <i class="fa fa-shopping-cart" style="display: block; font-size: 20px; padding: 10px;"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="product__discount__item__text">
+                    <h5><a href="{% url 'shop_details' product_id=product.product_id %}">{{ product.product_name }}</a></h5>
+                    <div class="product__item__price">{{ product.sales_price }} <span>{{ product.mrp }}</span></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+                    </div>
+                    <div class="filter__item">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-5">
+<!--                                <div class="filter__sort">-->
+<!--                                    <span>Sort By</span>-->
+<!--                                    <select id="sortByDropdown">-->
+<!--                                        <option value="{% url 'shop_low' %}">Price low to top</option>-->
+<!--                                        <option value="{% url 'shop_top' %}">Price top to low</option>-->
+<!--                                        <option value="{% url 'shop' %}">Default</option>-->
+<!--                                    </select>-->
+<!--                                    <button onclick="redirectToSelected()">Go</button>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="filter__found" id="productCount">
+                                    <h6><span id="currentProductCount">{{ products|length }}</span> Products found</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<div class="row">
+    {% for p in products %}
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="product__item">
+            <div class="product__item__pic set-bg"
+                {% if p.product_id %} onclick="handleClick2{{ p.product_id }}(event)" {% endif %}
+                style="cursor: pointer;" data-setbg="/media/{{ p.image_1 }}">
+                <ul class="product__item__pic__hover">
+
+                    <li>
+                        <a>
+                            <i class="fa fa-retweet" onclick="handleClick{{ p.product_id }}(event)"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <form method="post" action="{% url 'add_to_cart' product_id=p.product_id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="image" value="{{ p.image_1.url }}">
+                            <input type="hidden" name="name" value="{{ p.product_name }}">
+                            <input type="hidden" name="price" value="{{ p.sales_price }}">
+                            <!-- Add other details as needed -->
+                            <button type="submit" style="background-color: white; border: none; padding: 0; cursor: pointer; transition: background-color 0.3s; border-radius: 50%;" onmouseover="this.style.backgroundColor='brown'" onmouseout="this.style.backgroundColor='white'">
+                                <i class="fa fa-shopping-cart" style="display: block; font-size: 20px; padding: 10px;"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="product__item__text">
+                <h6><a href="{% url 'shop_details' product_id=p.product_id %}">{{ p.product_name }}</a></h6>
+                <h5>₹{{ p.sales_price }}</h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="product__pagination">
+    {% if products.has_previous %}
+        <a href="?page=1"><i class="fa fa-long-arrow-left"></i></a>
+    {% endif %}
+    {% for num in products.paginator.page_range %}
+        <a href="?page={{ num }}">{{ num }}</a>
+    {% endfor %}
+    {% if products.has_next %}
+        <a href="?page={{ products.paginator.num_pages }}"><i class="fa fa-long-arrow-right"></i></a>
+    {% endif %}
+</div>
+
+    </section>
+    <!-- Product Section End -->
+
+    {% include 'footer.html' %}
+
+<script>
+    {% for p in products %}
+        var product{{ p.product_id }} = {
+            imagePaths: [
+                '{{ p.image_1 }}',
+                '{{ p.image_2 }}',
+                '{{ p.image_3 }}',
+                '{{ p.image_4 }}',
+                '{{ p.image_5 }}'
+            ],
+            index: 0
+        };
+
+        function handleClick2{{ p.product_id }}(event) {
+            // Get the retweet button element
+            var retweetButton = event.target;
+
+            // Check if the click is not on the retweet button
+            if (!retweetButton.classList.contains('fa-retweet')) {
+                // Redirect to shop details page
+                var shopDetailsURL = '{% url 'shop_details' product_id=p.product_id %}';
+                window.location.href = shopDetailsURL;
+                return;
+            }
+
+            // Get the product item element
+            var productItem = retweetButton.closest('.product__item');
+            if (!productItem) return;
+
+            // Change the background image
+            productItem.querySelector('.product__item__pic').style.backgroundImage =
+                "url('/media/" + product{{ p.product_id }}.imagePaths[product{{ p.product_id }}.index] + "')";
+            product{{ p.product_id }}.index = (product{{ p.product_id }}.index + 1) % product{{ p.product_id }}.imagePaths.length;
+        }
+    {% endfor %}
+</script>
+
+
+<script>
+    {% for product in product_list %}
+        var product{{ product.product_id }} = {
+            imagePaths: [
+                '{{ product.image_1 }}',
+                '{{ product.image_2 }}',
+                '{{ product.image_3 }}',
+                '{{ product.image_4 }}',
+                '{{ product.image_5 }}'
+            ],
+            index: 0
+        };
+
+        function handleClick1{{ product.product_id }}(event) {
+            // Get the retweet button element
+            var retweetButton = event.target;
+
+            // Check if the click is not on the retweet button
+            if (!retweetButton.classList.contains('fa-retweet')) {
+                // Redirect to shop details page
+                var shopDetailsURL = '{% url 'shop_details' product_id=product.product_id %}';
+                window.location.href = shopDetailsURL;
+                return;
+            }
+
+            // Get the product item element
+            var productItem = retweetButton.closest('.product__discount__item');
+            if (!productItem) return;
+
+            // Change the background image
+            productItem.querySelector('.product__discount__item__pic').style.backgroundImage =
+                "url('/media/" + product{{ product.product_id }}.imagePaths[product{{ product.product_id }}.index] + "')";
+            product{{ product.product_id }}.index = (product{{ product.product_id }}.index + 1) % product{{ product.product_id }}.imagePaths.length;
+        }
+    {% endfor %}
+</script>
+<script>
+        $(document).ready(function () {
+            // Initialize the price range slider
+            $("#price-range").slider({
+                range: true,
+                min: 10,
+                max: 3000,
+                values: [10, 3000],
+                slide: function (event, ui) {
+                    // Update the input fields with the slider values
+                    $("#minamount").val(ui.values[0]);
+                    $("#maxamount").val(ui.values[1]);
+                },
+            });
+
+            // Set initial values and trigger slide event
+            $("#price-range").slider("values", [10, 3000]);
+
+            // Submit the form when the slider is released
+            $("#price-range").on("slidestop", function () {
+                $("form#price-filter-form").submit();
+            });
+        });
+    </script>
+    <!-- JS Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

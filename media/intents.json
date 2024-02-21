@@ -1,0 +1,120 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi there",
+                "How are you",
+                "Is anyone there?",
+                "Hey",
+                "Hello",
+                "What's Up?"
+            ],
+            "responses": [
+                "Hello",
+                "Good to see you again",
+                "Hi there, how can I help?"
+            ],
+            "context": [""]
+        },
+        {
+            "tag": "company",
+            "patterns": [
+                "tell about you",
+                "who are you",
+                "you are",
+                "How can I contact"
+            ],
+            "responses": [
+                "Baytech_innovation",
+                "Baytech_innovation - Software company",
+                "Baytech_innovation - IT Company"
+            ],
+            "context": [""]
+        },
+        {
+            "tag": "company_location",
+            "patterns": [
+                "where are you",
+                "location",
+                "How can I contact",
+                "place",
+                "which location"
+            ],
+          "responses": [
+            "Baytech_innovation-karungal-kanyakumari district",
+            "Baytech_innovation-Paloor-karungal-kanyakumari district"
+          ],
+            "context": [""]
+        },
+        {
+            "tag": "product",
+            "patterns": [
+                "What does your company do",
+                "Tell me about your company",
+                "company"
+            ],
+            "responses": [
+                "Software_training and software development",
+                "Custamised Software development company",
+                "Software Services"
+            ],
+            "context": [""]
+        },
+        {
+            "tag": "exit",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye",
+                "Nice chatting to you, bye",
+                "Till next time"
+                
+            ],
+            "responses": [
+                "Goodbye!",
+                "See you soon",
+                "Come back soon"
+            ],
+            "context": [""]
+        },
+      {
+        "tag": "thanks",
+        "patterns": [
+          "Thanks",
+          "Thank you",
+          "That's helpful",
+          "Awesome, thanks",
+          "Thanks for helping me",
+          "Thanks a lot!",
+          "Hey thanks a lot"
+        ],
+        "responses": [
+          "Happy to help!",
+          "My pleasure",
+          "It's my duty"
+        ],
+        "context": [ "" ]
+      },
+      {
+        "tag": "Others",
+        "patterns": [
+          "Fees details",
+          "Course details",
+          "training",
+          "softskills",
+          "products",
+          "services",
+          "job vacancy",
+          "carrier",
+          "job opening"
+        ],
+        "responses": [
+          "Kindly contact our office"
+        ],
+        "context": [ "" ]
+      }
+
+    ]
+}
+

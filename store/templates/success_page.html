@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css">
+
+    <style>
+
+
+        .success-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .success-message {
+            font-size: 18px;
+            color: #4CAF50;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #4CAF50;
+            background-color: #eaf7ea;
+            border-radius: 5px;
+            margin: 20px; /* Adjust the margin as needed */
+            max-width: 400px; /* Adjust the max-width as needed */
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- Page Preloader END -->
+
+{%if request.user.is_authenticated%}
+{% include "customer_navbar.html" %}
+{%else%}
+{% include "navbar.html" %}
+{%endif%}
+
+
+<body style="background-color: #f4f4f4; font-family: 'Arial', sans-serif;">
+
+<div style="max-width: 600px; margin: 50px auto; background-color: #ffffff; border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <div style="text-align: center;">
+        <h1 style="color: #ff6347; font-size: 24px;">Contact Form Submitted Successfully!</h1>
+        <p style="font-size: 18px; margin-top: 20px;">Thank you for your message. We'll be in touch soon.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <!-- Add your image URL here -->
+        <img src="{% static '/img/success.jpg' %}" alt="admin"
+             style="max-width: 100%; height: auto; border-radius: 10px;">
+    </div>
+</div>
+
+</body>
+
+
+<!-- Footer Section -->
+{% include 'footer.html' %}
+<!-- Footer Section END -->
+<script>
+    var imageIndex1 = 0;
+    var imagePaths1 = [
+        '{{ products.product_1.image_2 }}.jpg',
+        '{{ products.product_1.image_3 }}.jpg',
+        '{{ products.product_1.image_4 }}.jpg',
+        '{{ products.product_1.image_5 }}.jpg'
+    ];
+
+    function changeImage1() {
+        var featuredItem = document.querySelector('.col-lg-3 .featured__item__pic');
+        featuredItem.style.backgroundImage = "url('media/" +  imagePaths1[imageIndex1] + "')";
+        imageIndex1 = (imageIndex1 + 1) % imagePaths1.length;
+    }
+
+    var imageIndex2 = 0;
+    var imagePaths2 = [
+        '{{ products.product_2.image_2 }}.jpg',
+        '{{ products.product_2.image_3 }}.jpg',
+        '{{ products.product_2.image_4 }}.jpg',
+        '{{ products.product_2.image_5 }}.jpg'
+    ];
+
+    function changeImage2() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(2) .featured__item__pic');
+        featuredItem.style.backgroundImage = "url('media/"  + imagePaths2[imageIndex2] + "')";
+        imageIndex2 = (imageIndex2 + 1) % imagePaths2.length;
+    }
+
+    var imageIndex3 = 0;
+    var imagePaths3 = [
+        '{{ products.product_3.image_2 }}.jpg',
+        '{{ products.product_3.image_3 }}.jpg',
+        '{{ products.product_3.image_4 }}.jpg',
+        '{{ products.product_3.image_5 }}.jpg'
+    ];
+
+    function changeImage3() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(3) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths3[imageIndex3] + "')";
+        imageIndex3 = (imageIndex3 + 1) % imagePaths3.length;
+    }
+
+    // Variables for Product 4
+    var imageIndex4 = 0;
+    var imagePaths4 = [
+        '{{ products.product_4.image_2 }}.jpg',
+        '{{ products.product_4.image_3 }}.jpg',
+        '{{ products.product_4.image_4 }}.jpg',
+        '{{ products.product_4.image_5 }}.jpg'
+    ];
+
+    function changeImage4() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(4) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths4[imageIndex4] + "')";
+        imageIndex4 = (imageIndex4 + 1) % imagePaths4.length;
+    }
+
+    // Variables for Product 5
+    var imageIndex5 = 0;
+    var imagePaths5 = [
+        '{{ products.product_5.image_2 }}.jpg',
+        '{{ products.product_5.image_3 }}.jpg',
+        '{{ products.product_5.image_4 }}.jpg',
+        '{{ products.product_5.image_5 }}.jpg'
+    ];
+
+    function changeImage5() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(5) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths5[imageIndex5] + "')";
+        imageIndex5 = (imageIndex5 + 1) % imagePaths5.length;
+    }
+
+    // Variables for Product 6
+    var imageIndex6 = 0;
+    var imagePaths6 = [
+        '{{ products.product_6.image_2 }}.jpg',
+        '{{ products.product_6.image_3 }}.jpg',
+        '{{ products.product_6.image_4 }}.jpg',
+        '{{ products.product_6.image_5 }}.jpg'
+    ];
+
+    function changeImage6() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(6) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths6[imageIndex6] + "')";
+        imageIndex6 = (imageIndex6 + 1) % imagePaths6.length;
+    }
+
+    // Variables for Product 7
+    var imageIndex7 = 0;
+    var imagePaths7 = [
+        '{{ products.product_7.image_2 }}.jpg',
+        '{{ products.product_7.image_3 }}.jpg',
+        '{{ products.product_7.image_4 }}.jpg',
+        '{{ products.product_7.image_5 }}.jpg'
+    ];
+
+    function changeImage7() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(7) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths7[imageIndex7] + "')";
+        imageIndex7 = (imageIndex7 + 1) % imagePaths7.length;
+    }
+
+    // Variables for Product 8
+    var imageIndex8 = 0;
+    var imagePaths8 = [
+        '{{ products.product_8.image_2 }}.jpg',
+        '{{ products.product_8.image_3 }}.jpg',
+        '{{ products.product_8.image_4 }}.jpg',
+        '{{ products.product_8.image_5 }}.jpg'
+    ];
+
+    function changeImage8() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(8) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths8[imageIndex8] + "')";
+        imageIndex8 = (imageIndex8 + 1) % imagePaths8.length;
+    }
+
+
+</script>
+<!-- JS Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script> <!-- Add this line for Popper.js -->
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

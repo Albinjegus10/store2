@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Baytech Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css"> <!-- change sass to css in the end  -->
+</head>
+
+<body>
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+
+{%if request.user.is_authenticated%}
+{% include "customer_navbar.html" %}
+{%else%}
+{% include "navbar.html" %}
+{%endif%}
+
+
+<style media="screen">
+    body {
+      font-family: 'Cairo', sans-serif; /* Apply the Google Font to the body */
+    }
+
+    .success-page {
+      max-width: 800px;
+      margin: 50px auto; /* Center the success page horizontally */
+      text-align: center;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+
+    .btn-view-orders {
+      display: inline-block; /* Make the button inline-block to align with the text */
+      border: 1px solid #47c7c5;
+      width: 120px;
+      padding: 10px;
+      color: #fff;
+      background-color: #47c7c5;
+      text-decoration: none;
+      margin-top: 10px; /* Adjust the margin for better spacing */
+      margin-right: 10px; /* Add margin to the right for spacing between buttons */
+    }
+
+    h2 {
+      color: #0014ff;
+      margin-top: 25px;
+    }
+
+    p {
+      margin-bottom: 20px; /* Add space below the paragraph */
+    }
+
+    a {
+      text-decoration: none;
+    }
+</style>
+
+<br><br><br><br>
+<div class="success-page" style="top:auto;">
+    <h2>Payment Successful !</h2>
+    <p>We are delighted to inform you that we received your payments</p>
+    <a style="text-decoration:none;" href="{% url 'order_history' %}" class="btn-view-orders">View Orders</a>
+    <a style="text-decoration:none;" href="{% url 'home' %}">Continue Shopping</a>
+</div>
+
+
+{% include 'footer.html' %}
+
+
+<!-- JS Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
+

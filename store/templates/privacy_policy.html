@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css">
+
+
+    <style>
+        .privacy {
+         box-sizing: border-box;
+       width: 900px; /* Adjust the width as needed */
+       padding: 30px; /* Adjust the padding as needed */
+       background-color: #fff; /* Box background color */
+       border: 1px solid #ccc; /* Optional border */
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       margin-left:150px;
+         }
+
+         li {
+     list-style-type: disc;
+     color: grey;
+     font-size: 10px;
+   }
+    </style>
+</head>
+
+<body>
+<!-- Page Preloader -->
+
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- Page Preloader END -->
+{%if request.user.is_authenticated%}
+{% include "customer_navbar.html" %}
+{%else%}
+{% include "navbar.html" %}
+{%endif%}
+<!-- Header Section END -->
+
+<!-- Hero Section -->
+
+<!-- Hero Section END -->
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Privacy Policy</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<section class="privacy">
+    <p><strong>Privacy Policy</strong></p>
+
+
+    <p> This Privacy Policy outlines how we handle user information through our mobile application ("App"). By using the
+        App, you agree to comply with this policy, which is an integral part of our Terms of Use.</p>
+    <ul>
+        <li><p><strong>Consent</strong></p></li>
+
+        <p> By using the App or providing information, you consent to the collection and use of disclosed information.
+            If providing others' information, confirm authority to do so.</p>
+
+        <li><p><strong>Amendment</strong></p></li>
+        <p>The Privacy Policy may change without notice. Please periodically review it to stay informed.</p>
+
+        <li><p><strong>Collection of Information</strong></p></li>
+
+        <p>We collect and store personal information, including name, contact details, geolocation, and IP address when
+            you use our App. Feedback or comments you provide are also collected.</p>
+
+        <li><p><strong>Use of Information</strong></p></li>
+
+        <p> We use IP addresses for location identification and App administration. Collected information helps
+            understand user demographics and behavior for internal research.</p>
+
+        <li><p><strong>Geolocation</strong></p></li>
+
+        <p> We collect location information for features like Risk Assessment, depending on device and account
+            settings.</p>
+
+        <li><p><strong> Sharing of Information</strong></p></li>
+
+        <p> We may share information with affiliates but do not disclose personal data for third-party marketing without
+            explicit consent. Information may be disclosed in response to legal requirements.</p>
+
+        <li><p><strong> Links to Other Sites</strong></p></li>
+
+        <p> The App may contain links to third-party websites; their privacy practices are not our responsibility.</p>
+
+        <li><p><strong> Security Precautions</strong></p></li>
+
+        <p> Strict security measures are in place to prevent unauthorized access to information under our control.</p>
+
+        <li><p><strong> Cookies</strong></p></li>
+
+        <p> We use "cookies" on some App pages for analysis and feature enhancement. Cookies may be session-based or
+            permanent, containing no personally identifiable information. Third-party cookies are not under our
+            control.</p>
+
+        <li><p><strong> Choice/Opt-Out</strong></p></li>
+
+        <p> Users can opt-out of non-essential communications. Contact us to remove your contact information.</p>
+
+        <li><p><strong> Grievance Officer</strong></p></li>
+
+        <p> In compliance with the Information Technology Act 2000, our Grievance Officer's details are provided
+            below:</p>
+
+        <p><strong> Mr. Someone</strong></p>
+        <p>Baytech Innovations.</p>
+        <p> Paloor,</p>
+        <p> Karungal,</p>
+        <p> Kanniyakumari District,</p>
+        <p> Tamil Nadu, India, 234242.</p>
+        <p> Phone: 9750750519</p>
+        <p> Email: baytech@gmail.com</p>
+        <p>Time: Mon - Sat (9:00 - 18:00)</p>
+
+        <li><p><strong> Questions?</strong></p></li>
+
+        <p> For any questions about this statement, please <a style="color:grey;" href="{% url 'contact' %}"><strong>contact
+            us</strong></a></p>
+    </ul>
+</section>
+
+<br><br>
+<!-- Footer Section -->
+{% include "footer.html" %}
+<!-- Footer Section END -->
+
+<!-- JS Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

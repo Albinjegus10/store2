@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css">
+
+</head>
+
+<body>
+    <!-- Page Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- Page Preloader END -->
+
+  {%if request.user.is_authenticated%}
+    {% include "customer_navbar.html" %}
+  {%else%}
+    {% include "navbar.html" %}
+  {%endif%}
+
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Checkout</h2>
+                        <div class="breadcrumb__option">
+                            <a href="{% url 'home' %}">Home</a>
+                            <span>Checkout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section END -->
+
+
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
+                    </h6>
+                </div>
+            </div>
+            <div class="checkout__form">
+
+                <h4>Billing Details</h4>
+               <form method="post" action="{% url 'payment' %}?total={{ request.GET.total }}">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Fist Name<span>*</span></p>
+                                        <input type="text" name="first_name" value="{{ request.POST.first_name }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Last Name<span>*</span></p>
+                                        <input type="text" name="last_name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Country<span>*</span></p>
+                                <input type="text" name="country">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" name="street_address">
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)" name="apartment">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Town/City<span>*</span></p>
+                                <input type="text" name="town">
+                            </div>
+                            <div class="checkout__input">
+                                <p>State<span>*</span></p>
+                                <input type="text" name="state">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Postcode / ZIP<span>*</span></p>
+                                <input type="text" name="postcode">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Phone<span>*</span></p>
+                                        <input type="text" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        <input type="text" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="checkout__order">
+                                <h4>Your Order</h4>
+                                {% if discount_percent %}
+    <p>Discount: {{ discount_percent }}%</p>
+{% endif %}
+
+<div class="checkout__order__subtotal">Subtotal <span>Rs. {{ request.GET.subtotal }}</span></div>
+<div class="checkout__order__total">Total <span>Rs. {{ request.GET.total }}</span></div>
+
+
+                                <div class="checkout__input__checkbox">
+                                    <label for="paypal">
+                                        Razorpay
+                                        <input type="checkbox" id="paypal">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                                </div>
+                                <button type="submit" id="PlaceOrder" class="site-btn">PLACE ORDER</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout Section End -->
+<!-- Add an event listener to the button to handle the click event -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {% include 'footer.html' %}
+
+    <!-- JS Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

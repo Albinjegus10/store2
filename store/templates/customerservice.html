@@ -1,0 +1,385 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css">
+
+
+    <style>
+
+
+        @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+        .full{
+          margin: 0px;
+          padding: 0px;
+          box-sizing: border-box;
+          font-family: "Nunito", sans-serif;
+        }
+
+
+        .card-img-top {
+          height: 200px;
+          width: 100%;
+        }
+        .card {
+          z-index: 1;
+          overflow: hidden;
+          transition: 0.5s;
+        }
+        .card:hover {
+          color: white;
+        }
+        .card::before {
+          content: "";
+          position: absolute;
+          left: -100%;
+          top: 0%;
+          background: #833030;;
+          width: 100%;
+          height: 100%;
+          transition: 0.5s;
+          z-index: -1;
+        }
+        .card:hover::before {
+          left: 0%;
+          color: white;
+        }
+        .container-fluid {
+          background-image: url("blob-scene-haikei.svg");
+          background-position: center;
+          background-size: cover;
+        }
+        .custom-link {
+                text-decoration: none;
+                color: black;
+                font-size: 1.5em; /* Adjust the font size as needed */
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                margin-top: 20px; /* Adjust the top margin as needed */
+            }
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- Page Preloader END -->
+{%if request.user.is_authenticated%}
+{% include "customer_navbar.html" %}
+{%else%}
+{% include "navbar.html" %}
+{%endif%}
+<!-- Header Section END -->
+
+<!-- Hero Section -->
+
+
+<div class="full">
+
+    <div class="container-fluid">
+        <h2 style="background-color: #833030; color: #fff; text-align: center; padding: 10px;">Hi!How Can We Help You With</h2>
+        <hr class="mx-auto mb-5 w-25">
+        <div class="row mb-5">
+            <div class="col-12 col-sm-6 col-md-3 m-auto">
+                <!-- card starts here -->
+                <div class="card shadow">
+                    <i class="fas fa-truck-fast" style="font-size: 2em; display: block; margin: 20px auto 0;"></i>
+
+                    <div class="card-body">
+                        <a class="custom-link" href="{% url 'yourorder' %}">Cancel Order</a>
+
+                        <hr class="mx-auto w-75">
+
+                        <p>
+                            Cancel Order
+                        </p>
+                    </div>
+                </div>
+                <!-- card ends here -->
+            </div>
+            <!-- col ends here -->
+            <div class="col-12 col-sm-6 col-md-3 m-auto">
+                <!-- card starts here -->
+                <div class="card shadow">
+                    <i class="fa-solid fa-right-left" style="font-size: 2em; display: block; margin: 20px auto 0;"></i>
+                    <div class="card-body">
+                        <a class="custom-link" href="{% url 'returnorder' %}">Returns</a>
+
+                        <hr class="mx-auto w-75">
+                        <p>
+                            Return Items
+                        </p>
+
+                    </div>
+                </div>
+                <!-- card ends here -->
+            </div>
+            <!-- col ends here -->
+
+
+            <!-- card ends here -->
+        </div>
+        <!-- col ends here -->
+
+        <!-- card ends here -->
+    </div>
+</div>
+
+<!-- Contact Section Begin -->
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="fa-regular fa-pen-to-square"></span>
+                    <h4>Write to us</h4>
+                    <p style="text-align: left; margin: 0 auto; width: fit-content;">
+                        <b>Baytech</b>
+                        <br>Paloor,
+                        <br>Karungal,
+                        <br>Kanniyakumari
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="fa-regular fa-address-book"></span>
+                    <h4>Contact</h4>
+                    <p>Email:baytech@gmail.com<br>Phone:9293726282</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_clock_alt"></span>
+                    <h4>Open time</h4>
+                    <p>8:00 am - 23:00 pm</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="fa-solid fa-question"></span>
+                    <h4>Have Issues</h4>
+                    <a href="{% url 'contact' %}" style="color: black;">Contact us</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <p style="background-color: #F6F6F6; border: 1px solid #000000;">
+
+        <br><b> Ogani Help Centre: Get All Shopping Solutions Here</b><br>
+
+        Once you place your order on any online shopping store, the next obvious thing to do is wait for your product to
+        arrive. This wait can be quite anxiety-ridden if you do not get updates about your order or do not receive
+        support post-delivery of your order. However, with the Ogani Help Centre, your wait becomes exciting, and your
+        shopping experience becomes joyful, thanks to all the support it provides related to your order. With websites,
+        like Ogani, the entire shopping experience has gone through a major change. Now, you can conveniently shop any
+        time, from anywhere, and anything that you want. To ensure that your shopping experience is delightful, the
+        Ogani Help centre support offers every assistance that you need. From reporting specific delivered
+        product-related issues to letting you manage your orders, the Ogani Helpcentre has solutions to all your worries
+        related to your orders. Furthermore, if you do not find a solution to your queries here, then you can use the
+        Ogani Help Centre number to get your issues solved. Keep reading to know more about Ogani Help Centre and what
+        all assistance you get here:
+        <br><br>
+        <b>24x7 Customer Care Support</b>
+        <br>
+        You can 24x7 Customer Care Support on the Ogani Help Centre. Any query or issue that you possibly have while
+        shopping on Ogani is taken care here. This page is easy to navigate, and you can get support almost immediately.
+        Once you log onto your Ogani account, this page shows you your recent orders and lets you report any issue. By
+        clicking on the specific order, you can raise your query. It also has a chat option to ensure that your queries
+        and issues are taken care of. Similarly, there are other options on this page that are created to assist you and
+        to make your shopping experience hassle-free. You can get support any time and get a satisfactory solution to
+        your queries and issues within minutes.
+        <br><br>
+        <b>Types and Topics of Support in Ogani Help Centre</b>
+        <br>
+        Apart from helping you with your orders and/or your delivered product-related issues, you can find various other
+        support at Ogani Help Centre. You can select from three types of issues here - help with your issues, help with
+        your order, and help with other issues. You can track your orders here, manage your orders, get help with your
+        returns issues, and even get help related to various other issues, such as offers, payment, Ogani Plus, etc.
+        There are also details about specific help topics, such as cancellations and returns. available here. So, log on
+        to your Ogani account and shop without hassles and with complete help and support.
+        <br><br>
+        The Ogani Help Centre is available on the Ogani site to help every Ogani customer with any grievance that they
+        may have. You can find solutions regarding the tracking of your order. It will also help edit your delivery date
+        or address and more. All your issues will be addressed at any time of the day or night (24/7 service). This way,
+        you can immediately get your grievances addressed. You can also get help regarding returns and many other issues
+        through the Ogani Help Centre. In case you're not satisfied with the solution given, you can seek further
+        assistance. You can get in touch with a support assistant via the Ogani Help Centre number. The next time you
+        have any issue with your order or if you want more clarity regarding payment options, Ogani Plus,
+        account-related queries, and more, you can access Ogani Help Centre support for further information. This way,
+        you can shop without worry and have a satisfying shopping experience. The support centre will do all that it can
+        to address your grievance until you’re completely satisfied. So, no matter the nature of your grievance, you
+        must get in touch with the support forum. This way, you won’t have to compromise in any way.
+
+    </p>
+</section>
+<!-- Footer Section -->
+{% include "footer.html" %}
+<!-- Footer Section END -->
+<script>
+    var imageIndex1 = 0;
+    var imagePaths1 = [
+        '{{ products.product_1.image_2 }}.jpg',
+        '{{ products.product_1.image_3 }}.jpg',
+        '{{ products.product_1.image_4 }}.jpg',
+        '{{ products.product_1.image_5 }}.jpg'
+    ];
+
+    function changeImage1() {
+        var featuredItem = document.querySelector('.col-lg-3 .featured__item__pic');
+        featuredItem.style.backgroundImage = "url('media/" +  imagePaths1[imageIndex1] + "')";
+        imageIndex1 = (imageIndex1 + 1) % imagePaths1.length;
+    }
+
+    var imageIndex2 = 0;
+    var imagePaths2 = [
+        '{{ products.product_2.image_2 }}.jpg',
+        '{{ products.product_2.image_3 }}.jpg',
+        '{{ products.product_2.image_4 }}.jpg',
+        '{{ products.product_2.image_5 }}.jpg'
+    ];
+
+    function changeImage2() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(2) .featured__item__pic');
+        featuredItem.style.backgroundImage = "url('media/"  + imagePaths2[imageIndex2] + "')";
+        imageIndex2 = (imageIndex2 + 1) % imagePaths2.length;
+    }
+
+    var imageIndex3 = 0;
+    var imagePaths3 = [
+        '{{ products.product_3.image_2 }}.jpg',
+        '{{ products.product_3.image_3 }}.jpg',
+        '{{ products.product_3.image_4 }}.jpg',
+        '{{ products.product_3.image_5 }}.jpg'
+    ];
+
+    function changeImage3() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(3) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths3[imageIndex3] + "')";
+        imageIndex3 = (imageIndex3 + 1) % imagePaths3.length;
+    }
+
+    // Variables for Product 4
+    var imageIndex4 = 0;
+    var imagePaths4 = [
+        '{{ products.product_4.image_2 }}.jpg',
+        '{{ products.product_4.image_3 }}.jpg',
+        '{{ products.product_4.image_4 }}.jpg',
+        '{{ products.product_4.image_5 }}.jpg'
+    ];
+
+    function changeImage4() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(4) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths4[imageIndex4] + "')";
+        imageIndex4 = (imageIndex4 + 1) % imagePaths4.length;
+    }
+
+    // Variables for Product 5
+    var imageIndex5 = 0;
+    var imagePaths5 = [
+        '{{ products.product_5.image_2 }}.jpg',
+        '{{ products.product_5.image_3 }}.jpg',
+        '{{ products.product_5.image_4 }}.jpg',
+        '{{ products.product_5.image_5 }}.jpg'
+    ];
+
+    function changeImage5() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(5) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths5[imageIndex5] + "')";
+        imageIndex5 = (imageIndex5 + 1) % imagePaths5.length;
+    }
+
+    // Variables for Product 6
+    var imageIndex6 = 0;
+    var imagePaths6 = [
+        '{{ products.product_6.image_2 }}.jpg',
+        '{{ products.product_6.image_3 }}.jpg',
+        '{{ products.product_6.image_4 }}.jpg',
+        '{{ products.product_6.image_5 }}.jpg'
+    ];
+
+    function changeImage6() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(6) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths6[imageIndex6] + "')";
+        imageIndex6 = (imageIndex6 + 1) % imagePaths6.length;
+    }
+
+    // Variables for Product 7
+    var imageIndex7 = 0;
+    var imagePaths7 = [
+        '{{ products.product_7.image_2 }}.jpg',
+        '{{ products.product_7.image_3 }}.jpg',
+        '{{ products.product_7.image_4 }}.jpg',
+        '{{ products.product_7.image_5 }}.jpg'
+    ];
+
+    function changeImage7() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(7) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths7[imageIndex7] + "')";
+        imageIndex7 = (imageIndex7 + 1) % imagePaths7.length;
+    }
+
+    // Variables for Product 8
+    var imageIndex8 = 0;
+    var imagePaths8 = [
+        '{{ products.product_8.image_2 }}.jpg',
+        '{{ products.product_8.image_3 }}.jpg',
+        '{{ products.product_8.image_4 }}.jpg',
+        '{{ products.product_8.image_5 }}.jpg'
+    ];
+
+    function changeImage8() {
+        var featuredItem = document.querySelector('.col-lg-3:nth-child(8) .featured__item__pic'); // Adjust the selector as needed
+        featuredItem.style.backgroundImage = "url('media/" + imagePaths8[imageIndex8] + "')";
+        imageIndex8 = (imageIndex8 + 1) % imagePaths8.length;
+    }
+
+
+</script>
+<!-- JS Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

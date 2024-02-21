@@ -1,0 +1,102 @@
+<!-- navbar.html -->
+{% load static %}
+
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <!-- Left side of header -->
+                    <div class="header__top__left">
+                        <ul>
+                            <marquee behavior="alternate" direction="left">
+                                <li style="list-style-type: none;font-size: 18px; color: Red;">Free shipping for all
+                                    orders over Rs.500
+                                </li>
+                            </marquee>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <!-- Right side of header -->
+                    <div class="header__top__right">
+                        <div class="header__top__right__social">
+                            <a href="https://www.facebook.com/albin.jegus"><i class="fa fa-facebook"></i></a>
+                            <a href="https://x.com/Abi_Ram_1313?t=8gzhUyVfA6BViIl5JXA0dQ&s=08"><i
+                                    class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                        <div class="header__top__right__language" id="loginSignupDiv">
+
+                            <div id="greetingText"> Login & Signup</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                                <li><a href="{% url 'signup' %}">Signup</a></li>
+
+                            </ul>
+                        </div>
+
+                        <div class="header__top__right__language">
+                            <img src="{% static '/img/language.png' %}" style="width:20px" alt="">
+                            <div>language</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a href="#">English</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1">
+                <div class="header__logo"></div>
+            </div>
+            <div class="col-lg-10">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'shop' %}">Shop</a></li>
+                        <li><a href="{% url 'shopping_cart' %}">Shopping Cart</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                        <li><a href="{% url 'customerservice' %}">Help</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+<!--                <div class="header__cart">-->
+<!--                    <ul>-->
+<!--                        <li><a href="#"><i class="fa fa-heart"></i></a></li>-->
+<!--                        <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="hamburger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+
+    <script>
+        var isLoggedIn = {{ request.user.is_authenticated|yesno:"true,false" }};
+        var username = "{{ request.user.username }}";
+        var greetingDiv = document.getElementById("greetingText");
+
+        function updateGreeting() {
+            if (isLoggedIn) {
+                greetingDiv.textContent = "Hello, " + username;
+            } else {
+                greetingDiv.textContent = "Login & Signup";
+            }
+        }
+        updateGreeting();
+    </script>
+</header>

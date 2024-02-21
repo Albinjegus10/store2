@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+<form id="payment-form">
+    {% csrf_token %}
+    <input type="hidden" name="amount" value="{{ razorpay_amount }}">
+
+</form>
+
+<script>
+    window.onload = function() {
+        openPayment();
+    };
+
+    function openPayment() {
+        var options = {
+            key: "{{ razorpay_key }}",
+            amount: "{{ razorpay_amount }}",
+            currency: "{{ razorpay_currency }}",
+            name: "Your E-commerce Store",
+            description: "Payment for your order",
+            handler: function(response) {
+                console.log(response);
+                if (response.razorpay_payment_id) {
+                    // Redirect to success page or perform other actions
+                    window.location.href = "{% url 'payment_success' %}";
+                } else {
+                    alert("Payment failed. Please try again.");
+                }
+            }
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.open();
+    }
+</script>
+</body>
+</html>

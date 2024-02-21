@@ -1,0 +1,416 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>baytech</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'sass/style.css' %}" type="text/css">
+<style>
+    /* Shopping Cart Section Styles */
+
+.shoping-cart {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.shoping__cart__table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.shoping__cart__table th, .shoping__cart__table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+    background-color: #fff;
+    color: #333;
+}
+
+.shoping__cart__item {
+    display: flex;
+    align-items: center;
+}
+
+.shoping__cart__item img {
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.shoping__cart__quantity {
+    width: 150px;
+}
+
+.shoping__cart__quantity input {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.shoping__cart__quantity button {
+    padding: 8px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.shoping__cart__total {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.shoping__cart__item__close {
+    text-align: center;
+}
+
+.shoping__cart__item__close a {
+    color: #fff;
+    background-color: #e74c3c;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.shoping__cart__item__close a:hover {
+    background-color: #c0392b;
+}
+
+.shoping__cart__btns {
+    margin-top: 30px;
+}
+
+.shoping__checkout {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.shoping__checkout h5 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+.col-lg-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-top;
+}
+.shoping__checkout ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shoping__checkout ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 16px;
+}
+
+.shoping__checkout ul li span {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Sticky Header for Product Details */
+
+.shoping__cart__item.sticky {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+
+@media (max-width: 767px) {
+    .shoping__cart__table th, .shoping__cart__table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .shoping__cart__item img {
+        width: 60px;
+        margin-right: 10px;
+    }
+
+    .shoping__cart__quantity input {
+        width: 40px;
+    }
+
+    .shoping__cart__quantity button {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .shoping__checkout ul li {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .shoping__cart__btns {
+    display: flex;
+    justify-content: flex-end; /* Align the button to the right */
+    }
+}
+/* Add this CSS to style the "CONTINUE SHOPPING" button */
+.shoping__cart__btns {
+    display: flex;
+    justify-content: flex-left;
+    /* Align the button to the right */
+}
+
+.primary-btn.cart-btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.primary-btn.cart-btn:hover {
+    background-color: #2980b9;
+}
+
+
+
+</style>
+</head>
+
+<body>
+      <div id="preloader">
+      <div class="loader"></div>
+  </div>
+    {%if request.user.is_authenticated%}
+    {% include "customer_navbar.html" %}
+  {%else%}
+    {% include "navbar.html" %}
+  {%endif%}
+
+    <!-- Hero Section -->
+
+
+    <!-- Breadcrumb Section -->
+ <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb.jpg' %}">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Shopping Cart</h2>
+                        <div class="breadcrumb__option">
+                            <a href="{% url 'home' %}">Home</a>
+                            <span>Shopping Cart</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section END -->
+
+    <!-- Shoping Cart Section -->
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="shoping__product">Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in cart_items %}
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <img src="{{ item.product.image_1.url }}" alt="{{ item.product.product_name }}">
+                                    <h5>{{ item.product.product_name }}</h5>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    ₹{{ item.price }}
+                                </td>
+                                <td class="shoping__cart__quantity">
+                                    <form method="post" action="{% url 'update_cart' %}">
+                                        {% csrf_token %}
+                                        <div class="input-group input-group-sm">
+                                            <input type="hidden" name="product_id" value="{{ item.product.product_id }}">
+
+<!--                                             <input type="number" id="quantity_{{ item.product.product_id }}" name="quantity" value="{{ item.quantity }}" min="1" class="form-control"  onchange="calculateTotal({{ item.price }}, {{ item.product.product_id }})" enabled ="false">-->
+<input type="number" id="quantity_{{ item.product.product_id }}" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" onchange="calculateTotal({{ item.price }}, {{ item.product.product_id }})" onkeydown="return allowArrowKeys(event)" enabled="false">
+
+
+                                            </div>
+                                    </form>
+                                </td>
+                                <td class="shoping__cart__total">
+                             <input type="text" id="total_{{ item.product.product_id }}" name="total_value" readonly>
+                                </td>
+                                <td class="shoping__cart__item__close">
+                                    <a href="{% url 'remove_from_cart' item.product.product_id %}" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="shoping__cart__btns">
+                        <a href="{% url 'shop' %}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__checkout">
+                        <h5>Cart Total</h5>
+                        <ul>
+                            <div id="overallTotal">
+    <ul>
+        <li id="subtotalDisplay">Subtotal: ₹0.00</li>
+        <li id="totalDisplay">Total: ₹0.00</li>
+    </ul>
+            </div>
+                    <form method="post" action="{% url 'checkout' %}?total={{ total }}&subtotal={{ subtotal }}">
+                        {% csrf_token %}
+                        <input type="hidden" name="subtotal" value="{{ subtotal }}">
+                        <input type="hidden" name="total" value="{{ total }}">
+                        {% for item in cart_items %}
+                        <input type="hidden" name="products[{{ forloop.counter0 }}][name]" value="{{ item.product.product_name }}">
+                        <input type="hidden" name="products[{{ forloop.counter0 }}][image]" value="{{ item.product.image_1.url }}">
+                        <input type="hidden" name="products[{{ forloop.counter0 }}][price]" value="{{ item.price }}">
+                        <input type="hidden" name="products[{{ forloop.counter0 }}][quantity]" value="{{ item.quantity }}">
+                        <input type="hidden" name="products[{{ forloop.counter0 }}][total]" value="{{ item.total }}">
+                        {% endfor %}
+                        <button type="submit" class="primary-btn">PROCEED TO CHECKOUT</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Shoping -->
+
+ {% include 'footer.html' %}
+    <!-- Footer Section END -->
+
+      <script>
+    function allowArrowKeys(event) {
+    // Check if the pressed key is an arrow key
+    if (event.keyCode >= 37 && event.keyCode <= 40) {
+        return true; // Allow arrow keys
+    } else {
+        event.preventDefault(); // Prevent other keys from changing the input value
+        return false;
+    }
+}
+</script>
+
+<script>
+    window.onload = function() {
+        // Loop through each item in the cart and calculate the total
+        {% for item in cart_items %}
+            calculateTotal({{ item.price }}, {{ item.product.product_id }});
+        {% endfor %}
+    }
+
+    function allowArrowKeys(event) {
+        // Check if the pressed key is an arrow key
+        if (event.keyCode >= 37 && event.keyCode <= 40) {
+            return true; // Allow arrow keys
+        } else {
+            event.preventDefault(); // Prevent other keys from changing the input value
+            return false;
+        }
+    }
+
+    function calculateTotal(pricePerUnit, productId) {
+        var quantityInput = document.getElementById('quantity_' + productId);
+        var totalInput = document.getElementById('total_' + productId);
+        var quantity = parseInt(quantityInput.value);
+
+        // Calculate the total based on the price per unit and quantity
+        var total_value = quantity * pricePerUnit;
+        totalInput.value = '₹' + total_value.toFixed(2); // Assuming you want to display the total as currency
+
+        // Recalculate subtotal and overall total
+        updateTotals();
+    }
+
+    function updateTotals() {
+        var allTotals = document.querySelectorAll('input[name="total_value"]');
+        var subtotal = 0;
+        allTotals.forEach(function(input) {
+            subtotal += parseFloat(input.value.replace('₹', ''));
+        });
+
+        // Update the subtotal and total in the overallTotal div
+        var overallTotal = subtotal;
+        document.getElementById('subtotalDisplay').textContent = 'Subtotal: ₹' + subtotal.toFixed(2);
+        document.getElementById('totalDisplay').textContent = 'Total: ₹' + overallTotal.toFixed(2);
+    }
+</script>
+
+
+
+
+    <!-- JS Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
